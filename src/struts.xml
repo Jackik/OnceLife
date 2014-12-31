@@ -5,9 +5,14 @@
 
 <struts>
 	<constant name="struts.objectFactory" value="spring"></constant>
-	<package name="personAccount" namespace="/personAccount" extends="struts-default" >
+	<package name="personAccount" namespace="/person" extends="struts-default" >
 		<action name="addPersonAccount" class="registerAction" method="addPersonAccount">
-			<result name="success">..\index.jsp</result>
+			<result name="success">..\Login.jsp</result>
+			<result name="failure" type="redirect">..\Register.jsp</result>
+		</action>
+		<action name="loginAction" class="loginAction" method="checkUser">
+			<result name="success" type="redirect">..\index.jsp</result>
+			<result name="error" type="redirect">..\Login.jsp</result>
 		</action>
 	</package>
 </struts>

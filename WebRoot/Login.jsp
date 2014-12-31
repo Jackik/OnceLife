@@ -7,14 +7,17 @@
 <title>oncelife 登录</title>
 </head>
 <body>
-<form action="">
+<form action="./person/loginAction">
 <table align="center">
+<tr>
+<td>${message}</td>
+</tr>
 <tr>
 <td>
 账号
 </td>
 <td>
-<input type="text" name="email" value="邮箱、手机、用户名or数字账号"/>
+<input type="text" name="personAccount.email"/>
 </td>
 </tr>
 <tr>
@@ -22,7 +25,7 @@
 密码
 </td>
 <td>
-<input type="password" name="password"/>
+<input type="password" name="personAccount.password"/>
 </td>
 </tr>
 <tr>
@@ -35,9 +38,6 @@
 </tr>
 
 </table>
-
-
-
 </form>
 </body>
 </html>

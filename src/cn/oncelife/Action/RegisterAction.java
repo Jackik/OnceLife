@@ -32,9 +32,19 @@ public class RegisterAction  {
 	}
 
 	public String addPersonAccount(){
-		this.msg="hello struts";
-		personService.save(this.personAccount);
-		return "success";
+		if(!personAccount.getEmail().equals("")&&!personAccount.getPassword().equals("")&&!personAccount.getUserName().equals("")&&!personAccount.getPhoneNum().equals("")){
+			System.out.println(personAccount.getEmail());
+			System.out.println(personAccount.getPassword());
+			System.out.println(personAccount.getPhoneNum());
+			System.out.println(personAccount.getUserName());
+			personService.save(this.personAccount);
+			this.msg="恭喜您，注册成功，请登录";
+			return "success";
+		}else{
+			this.msg="注册失败，请联系管理员或者重新注册";
+			return "failure";
+		}
+		
 	}
 
 	/*@Override

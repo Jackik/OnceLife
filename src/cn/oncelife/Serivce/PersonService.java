@@ -9,5 +9,5 @@ public interface PersonService {
 	public void save(PersonAccount personAccount);
 	public void delete(PersonAccount personAccount);
 	public void update(PersonAccount personAccount);
-	public PersonAccount find(PersonAccount personAccount);
+	public PersonAccount find(String email,String password);
 }
