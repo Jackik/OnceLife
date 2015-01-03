@@ -7,12 +7,12 @@
 	<constant name="struts.objectFactory" value="spring"></constant>
 	<package name="personAccount" namespace="/person" extends="struts-default" >
 		<action name="addPersonAccount" class="registerAction" method="addPersonAccount">
-			<result name="success">..\Login.jsp</result>
-			<result name="failure" type="redirect">..\Register.jsp</result>
+			<result name="success">..\login.jsp</result>
+			<result name="failure" type="redirect">..\register.jsp</result>
 		</action>
 		<action name="loginAction" class="loginAction" method="checkUser">
 			<result name="success" type="redirect">..\index.jsp</result>
-			<result name="error" type="redirect">..\Login.jsp</result>
+			<result name="error" type="redirect">..\login.jsp</result>
 		</action>
 	</package>
 </struts>
