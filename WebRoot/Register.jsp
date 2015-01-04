@@ -13,12 +13,34 @@ function gotoLogin(){
 function checkEmail() {
 	var mail=document.getElementById("email").value;
 	var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+	var xmlhttp;
 	if (filter.test(mail)){
 		document.getElementById("div_email").innerHTML="邮箱格式正确";
+		if (window.XMLHttpRequest)
+		  {// code for IE7+, Firefox, Chrome, Opera, Safari
+		  xmlhttp=new XMLHttpRequest();
+		  }
+		else
+		  {// code for IE6, IE5
+		  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		  }
+		xmlhttp.onreadystatechange=function()
+		  {
+		  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		    {
+		    document.getElementById("div_email").innerHTML=xmlhttp.responseText;
+		    }
+		  }
+		xmlhttp.open("GET","./person/checkEmailReg",true);
+		xmlhttp.send();
+		document.getElementById("div_email").innerHTML=${message};
+		}
 	}
-	 else {
+	else {
 		 document.getElementById("div_email").innerHTML="邮箱格式不正确";
 	 }
+	
+	
 	}
 function checkPhone(){
 	var phoneNum = document.getElementById("phoneNum").value;
@@ -56,6 +78,7 @@ function CheckMail1() {
 </script>
 </head>
 <body>
+${message};
 <form action="./person/addPersonAccount" onSubmit="return CheckMail()">
 <table align="center">
 <tr>

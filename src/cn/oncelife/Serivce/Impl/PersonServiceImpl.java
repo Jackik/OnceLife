@@ -45,5 +45,15 @@ public class PersonServiceImpl implements PersonService {
 		}
 		return null;
 		
+	}	
+	public PersonAccount searchEmail(String email){
+		String hql="from PersonAccount as personAccount where personAccount.email=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setString(0, email);
+		List<PersonAccount> list=query.list();
+		for(PersonAccount personAccount:list){
+				return personAccount;
+		}
+		return null;
 	}
 }

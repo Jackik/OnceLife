@@ -2,6 +2,7 @@ package cn.oncelife.Action;
 
 import javax.annotation.Resource;
 
+import org.apache.jasper.tagplugins.jstl.core.Out;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -45,6 +46,17 @@ public class RegisterAction  {
 			return "failure";
 		}
 		
+	}
+	public void checkEmailReg(){
+		if(!personAccount.getEmail().equals("")){
+			if(personService.searchEmail(personAccount.getEmail())!=null){
+				this.msg="邮箱可以使用";
+		 	}else{
+		 		this.msg="邮箱已注册，请直接登录，如果忘记密码，请点击找回";
+		 	}
+		}else{
+			this.msg="请输入邮箱";
+		}
 	}
 
 	/*@Override

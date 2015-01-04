@@ -10,4 +10,5 @@ public interface PersonService {
 	public void delete(PersonAccount personAccount);
 	public void update(PersonAccount personAccount);
 	public PersonAccount find(String email,String password);
+	public PersonAccount searchEmail(String email);
 }

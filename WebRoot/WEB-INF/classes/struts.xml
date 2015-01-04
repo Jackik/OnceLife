@@ -14,5 +14,8 @@
 			<result name="success" type="redirect">..\index.jsp</result>
 			<result name="error" type="redirect">..\login.jsp</result>
 		</action>
+		<action name="checkEmailReg" class="registerAction" method="checkEmailReg">
+		</action>
+		
 	</package>
 </struts>
