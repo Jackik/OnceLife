@@ -15,6 +15,7 @@
 			<result name="error" type="redirect">..\login.jsp</result>
 		</action>
 		<action name="checkEmailReg" class="registerAction" method="checkEmailReg">
+			<result name="success">..\index.jsp</result>
 		</action>
 		
 	</package>

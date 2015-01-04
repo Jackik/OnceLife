@@ -47,7 +47,7 @@ public class RegisterAction  {
 		}
 		
 	}
-	public void checkEmailReg(){
+	public String checkEmailReg(){
 		if(!personAccount.getEmail().equals("")){
 			if(personService.searchEmail(personAccount.getEmail())!=null){
 				this.msg="邮箱可以使用";
@@ -57,6 +57,7 @@ public class RegisterAction  {
 		}else{
 			this.msg="请输入邮箱";
 		}
+		return "success";
 	}
 
 	/*@Override
