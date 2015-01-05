@@ -51,9 +51,14 @@ public class PersonServiceImpl implements PersonService {
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, email);
 		List<PersonAccount> list=query.list();
-		for(PersonAccount personAccount:list){
+		if(list.isEmpty()){
+			return null;
+		}else{
+			for(PersonAccount personAccount:list){
 				return personAccount;
+				}
+			return new PersonAccount();
 		}
-		return null;
+		
 	}
 }

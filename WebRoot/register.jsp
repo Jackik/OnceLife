@@ -8,14 +8,14 @@
 <script type="text/javascript">
 
 function gotoLogin(){
-	window.location.href='Login.jsp';	
+	window.location.href='login.jsp';	
 }
 function checkEmail() {
 	var mail=document.getElementById("email").value;
 	var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 	var xmlhttp;
 	if (filter.test(mail)){
-		document.getElementById("div_email").innerHTML="邮箱格式正确";
+		//document.getElementById("div_email").innerHTML="邮箱格式正确";
 		if (window.XMLHttpRequest)
 		  {// code for IE7+, Firefox, Chrome, Opera, Safari
 		  xmlhttp=new XMLHttpRequest();
@@ -33,7 +33,7 @@ function checkEmail() {
 		  }
 		xmlhttp.open("GET","./person/checkEmailReg",true);
 		xmlhttp.send();
-		document.getElementById("div_email").innerHTML=${message};
+		//document.getElementById("div_email").innerHTML=${message};
 		}
 	}
 	else {

@@ -48,8 +48,8 @@ public class RegisterAction  {
 		
 	}
 	public String checkEmailReg(){
-		if(!personAccount.getEmail().equals("")){
-			if(personService.searchEmail(personAccount.getEmail())!=null){
+		if(personAccount.getEmail()!=""){
+			if(personService.searchEmail(personAccount.getEmail())==null){
 				this.msg="邮箱可以使用";
 		 	}else{
 		 		this.msg="邮箱已注册，请直接登录，如果忘记密码，请点击找回";
@@ -57,6 +57,7 @@ public class RegisterAction  {
 		}else{
 			this.msg="请输入邮箱";
 		}
+		System.out.println(personAccount.getEmail());
 		return "success";
 	}
 
