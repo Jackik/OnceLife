@@ -1,5 +1,9 @@
 package cn.oncelife.Action;
 
+import java.io.InputStream;
+import java.io.StringBufferInputStream;
+import java.io.UnsupportedEncodingException;
+
 import javax.annotation.Resource;
 
 import org.apache.jasper.tagplugins.jstl.core.Out;
@@ -19,11 +23,20 @@ public class RegisterAction  {
 	@Resource PersonAccount personAccount;
 	
 	private String msg;
+	InputStream inputStream;
 	
 	public  String getMessage(){
 		return msg;
 	}
 	
+	public InputStream getInputStream() {
+		return inputStream;
+	}
+
+	public void setInputStream(InputStream inputStream) {
+		this.inputStream = inputStream;
+	}
+
 	public PersonAccount getPersonAccount() {
 		return personAccount;
 	}
@@ -50,13 +63,15 @@ public class RegisterAction  {
 	public String checkEmailReg(){
 		if(personAccount.getEmail()!=""){
 			if(personService.searchEmail(personAccount.getEmail())==null){
-				this.msg="邮箱可以使用";
+				inputStream= new StringBufferInputStream(transcoding("邮箱可以使用"));
 		 	}else{
-		 		this.msg="邮箱已注册，请直接登录，如果忘记密码，请点击找回";
+		 		inputStream= new StringBufferInputStream(transcoding("邮箱已注册，请直接登录，如果忘记密码，请点击找回"));
+		 		//this.msg="邮箱已注册，请直接登录，如果忘记密码，请点击找回";
 		 	}
 		}else{
-			this.msg="请输入邮箱";
+			inputStream= new StringBufferInputStream(transcoding("请输入邮箱"));
 		}
+		System.out.println(personAccount);
 		System.out.println(personAccount.getEmail());
 		return "success";
 	}
@@ -72,4 +87,12 @@ public class RegisterAction  {
 		// TODO Auto-generated method stub
 		return personAccount;
 	}*/
+	private String transcoding(String str) {  
+        try {  
+            return new String(str.getBytes("utf-8"), "iso-8859-1");  
+        } catch (UnsupportedEncodingException e) {  
+            e.printStackTrace();  
+        }  
+        return str;  
+    }  
 }

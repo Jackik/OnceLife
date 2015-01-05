@@ -16,13 +16,12 @@ function checkEmail() {
 	var xmlhttp;
 	if (filter.test(mail)){
 		//document.getElementById("div_email").innerHTML="邮箱格式正确";
-		if (window.XMLHttpRequest)
-		  {// code for IE7+, Firefox, Chrome, Opera, Safari
-		  xmlhttp=new XMLHttpRequest();
-		  }
-		else
-		  {// code for IE6, IE5
-		  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		if (window.XMLHttpRequest){
+			// code for IE7+, Firefox, Chrome, Opera, Safari
+			xmlhttp=new XMLHttpRequest();
+		  }else{
+			  // code for IE6, IE5
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 		  }
 		xmlhttp.onreadystatechange=function()
 		  {
@@ -31,16 +30,12 @@ function checkEmail() {
 		    document.getElementById("div_email").innerHTML=xmlhttp.responseText;
 		    }
 		  }
-		xmlhttp.open("GET","./person/checkEmailReg",true);
+		xmlhttp.open("GET","./person/checkEmailReg?personAccount.email="+mail,true);
 		xmlhttp.send();
 		//document.getElementById("div_email").innerHTML=${message};
-		}
-	}
-	else {
+	}else {
 		 document.getElementById("div_email").innerHTML="邮箱格式不正确";
 	 }
-	
-	
 	}
 function checkPhone(){
 	var phoneNum = document.getElementById("phoneNum").value;
